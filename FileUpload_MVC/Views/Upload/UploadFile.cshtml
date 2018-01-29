@@ -1,0 +1,83 @@
+﻿@model IEnumerable<FileUpload_MVC.Models.FileModel>
+
+@{
+    ViewBag.Title = "UploadFile";
+}
+
+<table><tr><td style="height:20px"></td></tr></table>
+@using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @ViewBag.Message
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Upload Files</b></div>
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td>
+                            @Html.TextBox("file", "", new { type = "file", style = "width: 1200px;" })
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+                        </td>
+                    </tr>
+                   
+                </table>
+
+
+                <!-- Upload Finished -->
+                <div class="js-upload-finished">
+                    <div class="panel-heading"><b>Upload history</b></div>
+                   
+                    <div class="list-group"> 
+                    @foreach (var item in Model)
+                    {
+                    <a href="#" class="list-group-item list-group-item-danger"><span class="badge alert-danger pull-right">@item.strFileCreateDate</span>@item.strFileName</a>
+                    
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+
+
+
+
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.strFileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strFileCreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.strFileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strFileCreateDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>*@
